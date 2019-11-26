@@ -90,7 +90,6 @@ Plug 'chxuan/prepare-code'
 Plug 'mhinz/vim-startify'
 Plug 'chxuan/change-colorscheme'
 Plug 'chxuan/cpp-mode'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/vim-slash'
 Plug 'rip-rip/clang_complete'
 call plug#end()
@@ -104,9 +103,14 @@ colorscheme industry
 "
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = '^'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <F3> :NERDTreeMirror<CR>
+map <F3> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.o','\.vscode']
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+let NERDTreeAutoCenter=1
+
 
 "airline
 "
@@ -213,3 +217,6 @@ endif
 let g:clang_library_path='/usr/lib/llvm-7/lib'
 " or path directly to the library file
 let g:clang_library_path='/usr/lib/llvm-7/lib/libclang-7.so.1'
+let g:clang_use_library=1
+"自动选择第一个匹配项但不插入到代码中
+let g:clang_auto_select = 1
