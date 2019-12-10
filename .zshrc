@@ -98,4 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# change psth for ssh server
+# tmux
+if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
+        tmux attach || tmux new; exit
+fi
