@@ -99,6 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # tmux
-if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-        tmux attach || tmux new; exit
+if which tmux > /dev/null 2 >&1;then
+    test -z "$TMUX" && (tmux attact || tmux new-session)
 fi
+# for ubuntu 18.04 workspace path
+alias cdw='cd /media/sf_Share_Data/workSpace'
+
