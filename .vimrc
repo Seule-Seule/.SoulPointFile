@@ -15,7 +15,6 @@ set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
 set number               " 开启行号显示
-set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
@@ -95,9 +94,8 @@ Plug 'rip-rip/clang_complete'
 call plug#end()
 
 " 主题
-set background=dark
 let g:onedark_termcolors=256
-colorscheme industry
+colorscheme desert
 
 " nerdtree
 "
@@ -214,9 +212,9 @@ endif
 " clang_complete'
 "
 " path to directory where library can be found
-let g:clang_library_path='/usr/lib/llvm-7/lib'
+let g:clang_library_path='/usr/lib/libclang.so.11'
 " or path directly to the library file
-let g:clang_library_path='/usr/lib/llvm-7/lib/libclang-7.so.1'
+"let g:clang_library_path='/usr/lib/libclang-cpp.so'
 let g:clang_use_library=1
 "自动选择第一个匹配项但不插入到代码中
 let g:clang_auto_select = 1
